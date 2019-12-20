@@ -84,6 +84,16 @@
         center: [74.224403,16.694169],
         zoom: 10.7
       });
+      
+      // Add geolocate control to the map.
+      map.addControl(
+        new mapboxgl.GeolocateControl({
+          positionOptions: {
+          enableHighAccuracy: true
+          },
+          trackUserLocation: true
+        })
+      );
 
       // zoom and rotation controls
       map.addControl(new mapboxgl.NavigationControl());
