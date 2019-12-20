@@ -34,13 +34,6 @@
 	
 	// zoom and rotation controls
       	map.addControl(new mapboxgl.NavigationControl());
-	
-	map.on('click', function(e) {
-        var features = map.queryRenderedFeatures(e.point, {
-
-        // replace this with the name of the layer
-        layers: ['kolhapur-parking-example'] 
-      	});
 </script>
  
 </body>
