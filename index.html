@@ -22,69 +22,28 @@ type="text/css"
  
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
-
-        // style URL
-        style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
-
-        // get the center in 'Dataset' -> 'GeoJSON'
-        center: [74.224403,16.694169],
-        zoom: 10.7
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [74.224403,16.694169],
+zoom: 10.7
 });
-	
-	// Add geolocate control to the map.
-map.addControl(
-new mapboxgl.GeolocateControl({
-positionOptions: {
-enableHighAccuracy: true
-},
-trackUserLocation: true
-})
-);
-
-	map.addControl(
-		new MapboxDirections({
-			accessToken: mapboxgl.accessToken
-		}),
-		'top-left'
-	);
-	
 	// zoom and rotation controls
-      map.addControl(new mapboxgl.NavigationControl());
-
-      map.on('click', function(e) {
+      	map.addControl(new mapboxgl.NavigationControl());
+	
+	map.on('click', function(e) {
         var features = map.queryRenderedFeatures(e.point, {
 
         // replace this with the name of the layer
         layers: ['kolhapur-parking-example'] 
       });
-	      
-	      map.on('load', function() {
-
-        // Add starting point to the map
-        map.addLayer({
-          id: 'point',
-          type: 'circle',
-          includeGeometry: true, //
-          source: {
-            type: 'geojson',
-            data: {
-            type: 'FeatureCollection',
-            features: [{
-              type: 'Feature',
-              properties: {},
-              geometry: {
-                type: 'Point',
-                coordinates: [start[0],start[1]]
-              }
-            }]
-            }
-          },
-          paint: {
-            'circle-radius': 8,
-            'circle-color': '#3887be'
-          }
-        });
-      });
+ 
+	map.addControl(
+		new MapboxDirections({
+		accessToken: mapboxgl.accessToken
+	}),
+	'top-left'
+	);
 </script>
  
 </body>
