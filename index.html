@@ -87,11 +87,13 @@
       
       // Add geolocate control to the map.
       map.addControl(
-        new mapboxgl.Geolocation.getCurrentPosition({
+        new mapboxgl.GeolocateControl({
           positionOptions: {
           enableHighAccuracy: true
           },
           trackUserLocation: true
+          var v1 = new mapboxgl.getLngLat();
+          console.log(v1);
         })
       );
 
