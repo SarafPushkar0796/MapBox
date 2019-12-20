@@ -17,9 +17,11 @@
 	@media only screen and (max-width:640px) {.directions-control.directions-control-directions {visibility: hidden!important;}}
 </style>
 </head>
-<body>
+<body onload="request();">
 <div id="map"></div>
 <script>
+	function request(){alert("While we are still under development, we request you to get your current location as starting point and destination as the blue markers on the map. Thankyou.");}
+	
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
 	var map = new mapboxgl.Map({
 	container: 'map', // container id
