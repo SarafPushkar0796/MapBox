@@ -28,8 +28,7 @@
     <p id="data"></p>
     <script type="text/javascript">
 
-      lat = 0;
-      lon = 0;
+      let lat,lon;
       var start = [,];
 
       // Get 'live' location
@@ -113,7 +112,6 @@
 
       // create a function to make a directions request
       function getRoute(end) {
-        start = [lat,lon];
         // make a directions request
         var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + lat + ',' + lon + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
 
