@@ -22,12 +22,24 @@ type="text/css"
  
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-center: [74.224403,16.694169],
-zoom: 10.7
-});
+	
+	var map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/mapbox/streets-v11',
+	center: [74.224403,16.694169],
+	zoom: 10.7
+	});
+	
+	// Add geolocate control to the map.
+	map.addControl(
+	new mapboxgl.GeolocateControl({
+	positionOptions: {
+	enableHighAccuracy: true
+	},
+	trackUserLocation: true
+	})
+	);
+	
 	// zoom and rotation controls
       	map.addControl(new mapboxgl.NavigationControl());
 	
@@ -39,8 +51,8 @@ zoom: 10.7
       });
  
 	map.addControl(
-		new MapboxDirections({
-		accessToken: mapboxgl.accessToken
+	new MapboxDirections({
+	accessToken: mapboxgl.accessToken
 	}),
 	'top-left'
 	);
