@@ -20,20 +20,16 @@
 	}
 </style>
 </head>
-<body onload="getLocation();">
+<body>
 <div id="map"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script>
 	$(document).ready(function(){
-		lat = '';
-		lon = '';
-		var startPoint = $('input:not([id]):not([class])').attr('placeholder');
-		startPoint.innerHTML = lat + lon;
-		console.log(startPoint);
-	
-	function request(){
-		alert("We are still under development and request you to allow location as starting point and click on the blue markers destination point on the map. Thankyou.");
-	}
+	lat = '';
+	lon = '';
+	var startPoint = $('input:not([id]):not([class])').attr('placeholder');
+	startPoint.innerHTML = lat + lon;
+	console.log(startPoint);
 
 	function getLocation(){
 		if (navigator.geolocation) {
