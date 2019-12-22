@@ -27,9 +27,6 @@
 	$(document).ready(function(){
 	lat = '';
 	lon = '';
-	var startPoint = $('input:not([id]):not([class])').attr('placeholder');
-	startPoint.innerHTML = lat + lon;
-	console.log(startPoint);
 
 	function getLocation(){
 		if (navigator.geolocation) {
@@ -43,6 +40,10 @@
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
 	}
+		
+	var startPoint = $('input:not([id]):not([class])').attr('placeholder');
+	startPoint.innerHTML = lat + lon;
+	console.log(startPoint);
 
 	function showError(error) {
 		switch(error.code) {
