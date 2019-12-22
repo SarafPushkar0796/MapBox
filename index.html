@@ -26,8 +26,8 @@
 <script type="text/javascript" async>
 	
 	$(document).ready(function(){
-		lat = '';
-		lon = '';
+		lat = 0;
+		lon = 0;
 		var startPoint = '';
 		
 		function getLocation(){
@@ -61,8 +61,8 @@
 		}
 		
 		startPoint = $('input:not([id]):not([class])').attr('placeholder');
-		if(startPoint != ''){
-			$('input:not([id]):not([class])').attr('value', lat + ',' + lon);
+		if(startPoint == 'Choose a starting place'){
+			$('input:not([id]):not([class])').attr('value', lon + ',' + lat);
 		}
 		console.log(startPoint);
 	}); // JQuery end
