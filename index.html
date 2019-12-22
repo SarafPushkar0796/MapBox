@@ -20,46 +20,46 @@
 	}
 </style>
 </head>
-<body>
+<body onload="getLocation();">
 <div id="map"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" async>
+	lat = 0;
+	lon = 0;
+	var startPoint = '';
 	
-	$(document).ready(function(){
-		lat = 0;
-		lon = 0;
-		var startPoint = '';
-		
-
+	function getLocation(){
 		if (navigator.geolocation) {
 		  navigator.geolocation.getCurrentPosition(showPosition, showError);
 		} else { 
 		  alert("Geolocation is not supported by this browser.");
 		}
-		
+	}
 
-		function showPosition(position) {
-			lat = position.coords.latitude;
-			lon = position.coords.longitude;
-		}
 
-		function showError(error) {
-			switch(error.code) {
-				case error.PERMISSION_DENIED:
-					console.log("User denied the request for Geolocation.");
-					break;
-				case error.POSITION_UNAVAILABLE:
-					console.log("Location information is unavailable.");
-					break;
-				case error.TIMEOUT:
-					console.log("The request to get user location timed out.");
-					break;
-				case error.UNKNOWN_ERROR:
-					console.log("An unknown error occurred.");
-					break;
-			}
+	function showPosition(position) {
+		lat = position.coords.latitude;
+		lon = position.coords.longitude;
+	}
+
+	function showError(error) {
+		switch(error.code) {
+			case error.PERMISSION_DENIED:
+				console.log("User denied the request for Geolocation.");
+				break;
+			case error.POSITION_UNAVAILABLE:
+				console.log("Location information is unavailable.");
+				break;
+			case error.TIMEOUT:
+				console.log("The request to get user location timed out.");
+				break;
+			case error.UNKNOWN_ERROR:
+				console.log("An unknown error occurred.");
+				break;
 		}
-		
+	}
+	
+	$(document).ready(function(){	
 		startPoint = $('input:not([id]):not([class])').attr('placeholder');
 		if(startPoint == 'Choose a starting place'){
 			$('input:not([id]):not([class])').attr('value', lon + ',' + lat);
