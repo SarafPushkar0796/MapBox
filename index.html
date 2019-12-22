@@ -14,45 +14,88 @@
 	#map { position: absolute; top: 0; bottom: 0; width: 100%; };
 	div[class="directions-control-instructions"]{visibility: hidden!important;}
 	.mapbox-directions-instructions{visibility: hidden!important;}
-	@media only screen and (max-width:640px) {.directions-control.directions-control-directions {visibility: hidden!important;}}
+	@media only screen and (max-width:640px) {
+		.directions-control.directions-control-directions {visibility: hidden!important;}
+		input:not([class]){}
+	}
 </style>
 </head>
 <body onload="request();">
 <div id="map"></div>
 <script>
-	function request(){alert("While we are still under development, we request you to get your current location as starting point and destination as the blue markers on the map. Thankyou.");}
+	lat;
+	lon;
+	var startPoint = $('input:not([id]):not([class])');
+	console.log(startPoint);
+	
+	function request(){
+		alert("We are still under development and request you to allow location as starting point and click on the blue markers destination point on the map. Thankyou.");
+		getLocation();
+	}
+
+	function getLocation(){
+		if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else { 
+          alert("Geolocation is not supported by this browser.");
+        }
+	}
+
+	function showPosition(position) {
+		x.innerHTML = "Latitude: " + position.coords.latitude + 
+		"<br>Longitude: " + position.coords.longitude;
+
+		lat = position.coords.latitude;
+		lon = position.coords.longitude;
+	}
+
+	function showError(error) {
+		switch(error.code) {
+			case error.PERMISSION_DENIED:
+				console.log("User denied the request for Geolocation.");
+				break;
+			case error.POSITION_UNAVAILABLE:
+				console.log("Location information is unavailable.");
+				break;
+			case error.TIMEOUT:
+				console.log("The request to get user location timed out.");
+				break;
+			case error.UNKNOWN_ERROR:
+				console.log("An unknown error occurred.");
+				break;
+		}
+	}
 	
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
 	var map = new mapboxgl.Map({
-	container: 'map', // container id
-	style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
-	center: [74.224403,16.694169],
-	zoom: 10.7
+		container: 'map', // container id
+		style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
+		center: [74.224403,16.694169],
+		zoom: 10.7
 	});
-	
 	
 	// Add geolocate control to the map.
 	map.addControl(
-	new mapboxgl.GeolocateControl({
-	positionOptions: {
-	enableHighAccuracy: true
-	},
-	trackUserLocation: true
-	})
+		new mapboxgl.GeolocateControl({
+			positionOptions: {
+			enableHighAccuracy: true
+			},
+			trackUserLocation: true
+		})
 	);
 	
 	// zoom and rotation controls
-      	map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.NavigationControl());
 	
 	// A to B directions 	
 	map.addControl(
-	new MapboxDirections({
-	accessToken: mapboxgl.accessToken
-	}),'top-left'
+		new MapboxDirections({
+		accessToken: mapboxgl.accessToken
+		}),'top-left'
 	);
+
 	
-	
+	// startPoint.innerHTML = lat + lon;
 </script>
- 
 </body>
 </html>
