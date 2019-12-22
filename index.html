@@ -25,7 +25,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script>
 	$(document).ready(function(){
-		var startPoint = $('input:not([id]):not([class])').placeholder();
+		var startPoint = $('input:not([id]):not([class])').attr('placeholder');
 		if(startPoint[0] == 'Choose a starting place'){
 			console.log('Starting point');
 		}
