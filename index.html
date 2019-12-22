@@ -23,44 +23,49 @@
 <body>
 <div id="map"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script>
+<script type="text/javascript" async>
+	
 	$(document).ready(function(){
-	lat = '';
-	lon = '';
-
-	function getLocation(){
-		if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else { 
-          alert("Geolocation is not supported by this browser.");
-        }
-	}
-
-	function showPosition(position) {
-		lat = position.coords.latitude;
-		lon = position.coords.longitude;
+		lat = '';
+		lon = '';
+		var startPoint = '';
 		
-	var startPoint = $('input:not([id]):not([class])').attr('value',lat + ',' + lon);
-	//startPoint.attr('value', lat + ',' + lon);
-	console.log(startPoint);
-	}
-
-	function showError(error) {
-		switch(error.code) {
-			case error.PERMISSION_DENIED:
-				console.log("User denied the request for Geolocation.");
-				break;
-			case error.POSITION_UNAVAILABLE:
-				console.log("Location information is unavailable.");
-				break;
-			case error.TIMEOUT:
-				console.log("The request to get user location timed out.");
-				break;
-			case error.UNKNOWN_ERROR:
-				console.log("An unknown error occurred.");
-				break;
+		function getLocation(){
+			if (navigator.geolocation) {
+			  navigator.geolocation.getCurrentPosition(showPosition, showError);
+			} else { 
+			  alert("Geolocation is not supported by this browser.");
+			}
 		}
-	}
+
+		function showPosition(position) {
+			lat = position.coords.latitude;
+			lon = position.coords.longitude;
+		}
+
+		function showError(error) {
+			switch(error.code) {
+				case error.PERMISSION_DENIED:
+					console.log("User denied the request for Geolocation.");
+					break;
+				case error.POSITION_UNAVAILABLE:
+					console.log("Location information is unavailable.");
+					break;
+				case error.TIMEOUT:
+					console.log("The request to get user location timed out.");
+					break;
+				case error.UNKNOWN_ERROR:
+					console.log("An unknown error occurred.");
+					break;
+			}
+		}
+		
+		startPoint = $('input:not([id]):not([class])').attr('placeholder');
+		if(startPoint != ''){
+			$('input:not([id]):not([class])').attr('value', lat + ',' + lon);
+		}
+		console.log(startPoint);
+	}); // JQuery end
 	
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
 	var map = new mapboxgl.Map({
@@ -89,8 +94,6 @@
 		accessToken: mapboxgl.accessToken
 		}),'top-left'
 	);
-
-	}); // JQuery end
 	// startPoint.innerHTML = lat + lon;
 </script>
 </body>
