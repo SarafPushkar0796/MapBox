@@ -23,8 +23,8 @@
 <body onload="request();">
 <div id="map"></div>
 <script>
-	lat;
-	lon;
+	lat = '';
+	lon = '';
 	var startPoint = $('input:not([id]):not([class])');
 	console.log(startPoint);
 	
@@ -42,9 +42,6 @@
 	}
 
 	function showPosition(position) {
-		x.innerHTML = "Latitude: " + position.coords.latitude + 
-		"<br>Longitude: " + position.coords.longitude;
-
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
 	}
