@@ -41,8 +41,8 @@
 		lon = position.coords.longitude;
 	}
 		
-	var startPoint = $('input:not([id]):not([class])').attr('placeholder');
-	startPoint.innerHTML = lat + lon;
+	var startPoint = $('input:not([id]):not([class])').attr('value',lat + ',' + lon);
+	//startPoint.attr('value', lat + ',' + lon);
 	console.log(startPoint);
 
 	function showError(error) {
