@@ -36,12 +36,14 @@
 		}
 	}
 
-
 	function showPosition(position) {
+		
+		// get coordinates 		
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
 		console.log(lon + ',' + lat);
-		//var x = document.getElementsByTagName("input:not([id]):not([class])")[0].value = lon + ',' + lat;
+		
+		// assign lat & lon to point A (starting point i.e live location)
 		var x = document.getElementsByTagName("input")[0].value = lon + ',' + lat;
 		console.log(x);
 	}
@@ -63,14 +65,6 @@
 		}
 	}
 	
-// 	$(document).ready(function(){	
-// 		startPoint = $('input:not([id]):not([class])').attr('placeholder');
-// 		if(startPoint == 'Choose a starting place'){
-// 			$('input:not([id]):not([class])').attr('value', lon + ',' + lat);
-// 		}
-// 		console.log(startPoint);
-// 	}); // JQuery end
-	
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
 	var map = new mapboxgl.Map({
 		container: 'map', // container id
@@ -90,7 +84,7 @@
 	);
 	
 	// zoom and rotation controls
-    map.addControl(new mapboxgl.NavigationControl());
+    	map.addControl(new mapboxgl.NavigationControl());
 	
 	// A to B directions 	
 	map.addControl(
@@ -98,7 +92,6 @@
 		accessToken: mapboxgl.accessToken
 		}),'top-left'
 	);
-	// startPoint.innerHTML = lat + lon;
 </script>
 </body>
 </html>
