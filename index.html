@@ -41,6 +41,9 @@
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
 		console.log(lat + ',' + lon);
+		var x = document.getElementsByTagName("input:not([id]):not([class])")[0];
+		x.value = lat + ',' + lon;
+		console.log(x);
 	}
 
 	function showError(error) {
@@ -60,13 +63,13 @@
 		}
 	}
 	
-	$(document).ready(function(){	
-		startPoint = $('input:not([id]):not([class])').attr('placeholder');
-		if(startPoint == 'Choose a starting place'){
-			$('input:not([id]):not([class])').attr('value', lon + ',' + lat);
-		}
-		console.log(startPoint);
-	}); // JQuery end
+// 	$(document).ready(function(){	
+// 		startPoint = $('input:not([id]):not([class])').attr('placeholder');
+// 		if(startPoint == 'Choose a starting place'){
+// 			$('input:not([id]):not([class])').attr('value', lon + ',' + lat);
+// 		}
+// 		console.log(startPoint);
+// 	}); // JQuery end
 	
 	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
 	var map = new mapboxgl.Map({
