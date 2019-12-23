@@ -41,7 +41,8 @@
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
 		console.log(lon + ',' + lat);
-		var x = document.getElementsByTagName("input:not([id]):not([class])")[0].value = lon + ',' + lat;
+		//var x = document.getElementsByTagName("input:not([id]):not([class])")[0].value = lon + ',' + lat;
+		var x = document.getElementsByTagName("input")[0].value = lon + ',' + lat;
 		console.log(x);
 	}
 
