@@ -40,9 +40,9 @@
 	function showPosition(position) {
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
-		console.log(lat + ',' + lon);
+		console.log(lon + ',' + lat);
 		var x = document.getElementsByTagName("input:not([id]):not([class])")[0];
-		x.value = lat + ',' + lon;
+		//x.value = lon + ',' + lat;
 		console.log(x);
 	}
 
