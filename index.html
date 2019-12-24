@@ -51,7 +51,7 @@
 			zoom: 10.7
 		});
 		
-		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken}).style.float = 'left';
+		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken}).style.textAlign = 'left';
 		map.addControl(directionsControl);
 		directionsControl.setOrigin(userCoordinates);
 		
