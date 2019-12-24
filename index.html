@@ -30,14 +30,14 @@
         var map = new mapboxgl.Map({
             container: "map",
             style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
-            center: [74.224403,16.694169],
+            center: [position.coords.longitude,position.coords.latitude],
             zoom: 10.7
         });
 
         var directionsControl = new MapboxDirections({accessToken: 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g'})
             map.addControl(directionsControl);
 
-         //directionsControl.setOrigin(userCoordinates);
+         directionsControl.setOrigin(userCoordinates);
 	 
 	    // Add geolocate control to the map.
 	    map.addControl(
