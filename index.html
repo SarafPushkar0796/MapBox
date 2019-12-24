@@ -26,6 +26,7 @@
 <script type="text/javascript" async>
 	lat = 0;
 	lon = 0;
+	const userCoordinates;
 	var startPoint = '';
 	
 	function getLocation(){
@@ -37,7 +38,7 @@
 	}
 
 	function showPosition(position) {
-		const userCoordinates = [position.coords.longitude, position.coords.latitude];
+		userCoordinates = [position.coords.longitude, position.coords.latitude];
 		// get coordinates 		
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
