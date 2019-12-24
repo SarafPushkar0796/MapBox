@@ -26,8 +26,7 @@
 <script type="text/javascript" async>
 	lat = 0;
 	lon = 0;
-	const userCoordinates = new Array(2);
-	var startPoint = '';
+	var userCoordinates = [];
 	
 	function getLocation(){
 		if (navigator.geolocation) {
@@ -88,11 +87,15 @@
     	map.addControl(new mapboxgl.NavigationControl());
 	
 	// A to B directions 	
-	map.addControl(
-		new MapboxDirections({
-		accessToken: mapboxgl.accessToken
-		}),'top-left'
-	).setOrigin(userCoordinates);
+// 	map.addControl(
+// 		new MapboxDirections({
+// 		accessToken: mapboxgl.accessToken
+// 		}),'top-left'
+// 	);
+	
+	var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken}),'top-left';
+	map.addControl(directionsControl);
+	directionsControl.setOrigin(userCoordinates);
 </script>
 </body>
 </html>
