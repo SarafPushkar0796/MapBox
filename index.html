@@ -41,12 +41,24 @@
 		// get coordinates 		
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
+		console.log(lon + ',' + lat);
+		
+		mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
+		var map = new mapboxgl.Map({
+			container: 'map', // container id
+			style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
+			center: [74.224403,16.694169],
+			zoom: 10.7
+		});
+		
+		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken});
+		map.addControl(directionsControl);
+		directionsControl.setOrigin(userCoordinates);
 		
 		// assign lat & lon to point A (starting point i.e live location)
 		// var x = document.getElementsByTagName("input")[0].value = lon + ',' + lat;
 		// console.log(x);
 	}
-	console.log(lon + ',' + lat);
 
 	function showError(error) {
 		switch(error.code) {
@@ -64,14 +76,6 @@
 				break;
 		}
 	}
-	
-	mapboxgl.accessToken = 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g';
-	var map = new mapboxgl.Map({
-		container: 'map', // container id
-		style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
-		center: [74.224403,16.694169],
-		zoom: 10.7
-	});
 	
 	// Add geolocate control to the map.
 	map.addControl(
@@ -92,10 +96,6 @@
 // 		accessToken: mapboxgl.accessToken
 // 		}),'top-left'
 // 	);
-	
-	var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken},'top-left');
-	map.addControl(directionsControl);
-	directionsControl.setOrigin(userCoordinates);
 </script>
 </body>
 </html>
