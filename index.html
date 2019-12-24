@@ -20,8 +20,6 @@
 </style>
 </head>
 <body>
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css"/>
   <div id="map"></div>
 
   <script>
@@ -39,7 +37,7 @@
         var directionsControl = new MapboxDirections({accessToken: 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g'})
             map.addControl(directionsControl);
 
-         directionsControl.setOrigin(userCoordinates);
+         //directionsControl.setOrigin(userCoordinates);
 	 
 	    // Add geolocate control to the map.
 	    map.addControl(
