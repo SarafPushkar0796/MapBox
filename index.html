@@ -55,6 +55,19 @@
 		map.addControl(directionsControl,'top-left');
 		directionsControl.setOrigin(userCoordinates);
 		
+		// Add geolocate control to the map.
+		map.addControl(
+			new mapboxgl.GeolocateControl({
+				positionOptions: {
+				enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			})
+		);
+
+		// zoom and rotation controls
+		map.addControl(new mapboxgl.NavigationControl());
+		
 		// assign lat & lon to point A (starting point i.e live location)
 		// var x = document.getElementsByTagName("input")[0].value = lon + ',' + lat;
 		// console.log(x);
@@ -82,26 +95,6 @@
 		container: 'map', // container id
 		style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
 	});
-	
-	// Add geolocate control to the map.
-	map.addControl(
-		new mapboxgl.GeolocateControl({
-			positionOptions: {
-			enableHighAccuracy: true
-			},
-			trackUserLocation: true
-		})
-	);
-	
-	// zoom and rotation controls
-    	map.addControl(new mapboxgl.NavigationControl());
-	
-	// A to B directions 	
-// 	map.addControl(
-// 		new MapboxDirections({
-// 		accessToken: mapboxgl.accessToken
-// 		}),'top-left'
-// 	);
 </script>
 </body>
 </html>
