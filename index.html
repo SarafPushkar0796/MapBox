@@ -39,21 +39,21 @@
         var directionsControl = new MapboxDirections({accessToken: 'pk.eyJ1IjoicHVzaGthci1kamFuZ28tbWFwcyIsImEiOiJjazNlMWhtNG0xYjV1M2RzMTBlM2Rnd2dkIn0.l8Q-dN41hMAKJfZ3MhqL-g'})
             map.addControl(directionsControl);
 
-         directionsControl.setOrigin(userCoordinates)
+         directionsControl.setOrigin(userCoordinates);
+	 
+	    // Add geolocate control to the map.
+	    map.addControl(
+	      new mapboxgl.GeolocateControl({
+		positionOptions: {
+		enableHighAccuracy: true
+		},
+		trackUserLocation: true
+	      })
+	    );
+
+	    // zoom and rotation controls
+	    map.addControl(new mapboxgl.NavigationControl());
     });
-
-    // Add geolocate control to the map.
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {
-        enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      })
-    );
-
-    // zoom and rotation controls
-    map.addControl(new mapboxgl.NavigationControl());
   </script>
   </body>
 </html>
