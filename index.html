@@ -51,8 +51,9 @@
 			zoom: 10.7
 		});
 		
-		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken}).style.textAlign = 'left';
+		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken});
 		map.addControl(directionsControl);
+		directionsControl.style.alignItems = 'initial';
 		directionsControl.setOrigin(userCoordinates);
 		
 		// assign lat & lon to point A (starting point i.e live location)
