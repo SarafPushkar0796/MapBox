@@ -51,7 +51,7 @@
 			zoom: 10.7
 		});
 		
-		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken});
+		var directionsControl = new MapboxDirections({accessToken: mapboxgl.accessToken}).style.float = 'left';
 		map.addControl(directionsControl);
 		directionsControl.setOrigin(userCoordinates);
 		
@@ -81,8 +81,6 @@
 	var map = new mapboxgl.Map({
 		container: 'map', // container id
 		style: 'mapbox://styles/pushkar-django-maps/ck3jout680jo21co1rwmyxjji', 
-		center: [74.224403,16.694169],
-		zoom: 10.7
 	});
 	
 	// Add geolocate control to the map.
